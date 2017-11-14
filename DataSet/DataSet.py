@@ -24,9 +24,7 @@ class DataSet:
                         print('Loading ', framepath)
                         self.videos[vidIndex, frame] = imread(framepath)[:,:,:3]
         random.seed(7)
-        self.Indices = list(range(3*5))
-        random.shuffle(self.Indices)
-        self.size = len(self.Indices)
+        self.reset()
     
     def get_batch(self,batch_size=5):
         # Initialisation
@@ -40,3 +38,9 @@ class DataSet:
                 labels.append(self.activity[ni])
         
         return videos,labels
+    
+    def reset(self):
+        # Reset the data set before starting a new epoch
+        self.Indices = list(range(3*5))
+        self.size = len(self.Indices)
+        random.shuffle(self.Indices)
