@@ -18,7 +18,7 @@ tf.set_random_seed(3)
 
 #Imports
 import numpy as np
-
+from keras.utils import np_utils
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.patches as mpatches
@@ -69,5 +69,16 @@ def plot_values_with_legends(x,y,legend_to_plot,x_axis,y_axis,title,color='red')
     plt.legend(handles=[patch])
     plt.show()
 
+def view_video_seq(x,y,time_step,item_num):
+    print('label:{}'.format(y[item_num]))
+    print('Video_seq shape:',x.shape,'Label shape',y.shape)
+    for i in range (0,time_step):
+        img=x[item_num][i]
+        view_image(img)
+        
+def one_hot(y,nb_classes):
+    return np_utils.to_categorical(y,nb_classes)
+        
 def leo():
     print('leo {}'.format(3))
+    
