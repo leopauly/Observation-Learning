@@ -45,7 +45,7 @@ def batch_gen_train(nb_classes,batch_size,time_step,h,w,ch,imagefolderpath,gray,
         j_new=0
         action_id=randint(0,nb_classes-1)
         seq=(randint(0,110)*10)
-        for j in range(seq,seq+50):
+        for j in range(seq,seq+time_step):
            
             if (gray==True):
                 img = np.array(cv2.imread(str(imagefolderpath+'/'+str(action_id)+'/'+str(j)+'.png'),0))
@@ -54,7 +54,7 @@ def batch_gen_train(nb_classes,batch_size,time_step,h,w,ch,imagefolderpath,gray,
             if(normalisation==True):
                 img = img.astype('float32')
                 img=img/255
-            
+    
             X[i][j_new]=np.array(img)
             j_new=j_new+1
         y[i]=action_id   
