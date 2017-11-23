@@ -60,7 +60,7 @@ def reshape_rgb_as_tensor(batch_x):
 
 def plot_values_with_legends(x,y,legend_to_plot,x_axis,y_axis,title,color='red'):
     patch = mpatches.Patch(color=color, label=legend_to_plot)
-    plt.figure(figsize=(5,5))
+    plt.figure(figsize=(20,5))
     plt.plot(x,y)
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
@@ -75,6 +75,21 @@ def view_video_seq(x,y,time_step,item_num):
     for i in range (0,time_step):
         img=x[item_num][i]
         view_image(img)
+        
+def view_video_inline(x,y,time_step,item_num,axis_show='off'):
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+ 
+    plt.figure(figsize=(30,30))
+    for i in range (0,time_step):
+        img=x[item_num][i]
+        plt.subplot(2,time_step,i+1)
+        plt.imshow(img)
+        plt.axis(axis_show)
+    plt.gray()
+    plt.show()  
+    
         
 def one_hot(y,nb_classes):
     return np_utils.to_categorical(y,nb_classes)

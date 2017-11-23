@@ -5,13 +5,14 @@ Author : @leopauly
 '''
 #Imports
 import numpy as np
-import cv2
 import keras 
 from random import randint
 
 def batch_gen(batch_start,batch_stop,batch_size,time_step,h,w,ch,imagefolderpath,gray,normalisation=True):
     ''' Genreates batches of video sequences suitable for feeding to a ConvLSTM
     '''
+    import cv2
+    
     if (ch==1):
         X=np.zeros([batch_size,time_step,h,w])
     else:
@@ -34,6 +35,7 @@ def batch_gen_train(nb_classes,batch_size,time_step,h,w,ch,imagefolderpath,gray,
     ''' Genreates batches of video sequences suitable for feeding to a ConvLSTM
         Remember : Change definition for seq
     '''
+    import cv2
     
     if (ch==1):
         X=np.zeros([batch_size,time_step,h,w])
@@ -66,6 +68,8 @@ def batch_gen_test(nb_classes,batch_size,time_step,h,w,ch,imagefolderpath,gray,n
         Remember : Change definition for seq
     '''
     
+    import cv2
+    
     if (ch==1):
         X=np.zeros([batch_size,time_step,h,w])
     else:
@@ -90,3 +94,12 @@ def batch_gen_test(nb_classes,batch_size,time_step,h,w,ch,imagefolderpath,gray,n
             j_new=j_new+1
         y[i]=action_id   
     return X,y
+
+def cluster_generator(x,num_clusters,cluster_length,height,width,channel):
+    clusters=np.zeros([num_clusters,cluster_length,height,width,channel])
+    print(clusters.shape)
+    for i in range(num_clusters):
+        w=x[0,(i*cluster_length):((i+1)*cluster_length)]
+        w=w.reshape(1,w.shape[0],height,width,channel)
+        clusters[i]=w
+    return clusters
