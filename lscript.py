@@ -58,12 +58,14 @@ def reshape_rgb_as_tensor(batch_x):
     batch_x = batch_x.reshape(batch_x.shape[0],batch_x.shape[1], batch_x.shape[2],3)
     return batch_x
 
-def plot_values_with_legends(x,y,legend_to_plot,x_axis,y_axis,title,color='red'):
+def plot_values_with_legends(x,y,legend_to_plot,x_axis,y_axis,title,color='red',ylim=True):
     patch = mpatches.Patch(color=color, label=legend_to_plot)
     plt.figure(figsize=(20,5))
     plt.plot(x,y)
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
+    plt.grid(True)
+    plt.ylim((-.2,0))
     plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
     plt.title(title)
     plt.legend(handles=[patch])
@@ -84,10 +86,10 @@ def view_video_inline(x,y,time_step,item_num,axis_show='off'):
     plt.figure(figsize=(30,30))
     for i in range (0,time_step):
         img=x[item_num][i]
-        plt.subplot(2,time_step,i+1)
-        plt.imshow(img)
+        plt.subplot(1,time_step,i+1)
+        plt.imshow(img,cmap='viridis')
         plt.axis(axis_show)
-    plt.gray()
+    #plt.color()
     plt.show()  
     
         

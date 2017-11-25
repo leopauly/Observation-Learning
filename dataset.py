@@ -103,3 +103,12 @@ def cluster_generator(x,num_clusters,cluster_length,height,width,channel):
         w=w.reshape(1,w.shape[0],height,width,channel)
         clusters[i]=w
     return clusters
+
+def clusters_with_strides(x,num_clusters,cluster_length,height,width,channel,strides):
+    clusters=np.empty([num_clusters,cluster_length,height,width,channel])
+    print(clusters.shape)
+    for i in range(num_clusters):
+        w=x[0,(i*strides):((i*strides)+cluster_length)]
+        w=w.reshape(1,w.shape[0],height,width,channel)
+        clusters[i]=w
+    return clusters

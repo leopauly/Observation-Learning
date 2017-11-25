@@ -8,7 +8,7 @@ from scipy.ndimage import imread
 
 class DataSet():
         
-    def __init__(self,nb_class,time_step, height, width, channel,dspath):   
+    def __init__(self,nb_class,time_step, height, width, channel,dspath,classname='diff'):   
         
         self.dspath=dspath
         self.height=height
@@ -17,6 +17,7 @@ class DataSet():
         self.time_step=time_step
         self.nb_class=nb_class
         self.seq_per_class=5
+        self.classname=classname
         
         self.videos = np.empty([nb_class*self.seq_per_class, time_step, height, width, channel], dtype=np.uint8)
         self.activity = []
@@ -24,7 +25,10 @@ class DataSet():
         for directory in listdir(dspath): 
             if directory[0] != '.': #Each Activity
                 for vid in range(5): #Each video
-                    vidpath = dspath+'reach'+'/'+str(vid)+'/'  #directory
+                    if (self.classname=='diff'):
+                        vidpath = dspath+directory+'/'+str(vid)+'/'  
+                    else:
+                        vidpath = dspath+classname+'/'+str(vid)+'/'
                     vidIndex += 1;
                     self.activity.append(directory)
                     for frame in range(40): #Each frame
