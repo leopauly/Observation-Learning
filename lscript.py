@@ -65,7 +65,7 @@ def plot_values_with_legends(x,y,legend_to_plot,x_axis,y_axis,title,color='red',
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
     plt.grid(True)
-    plt.ylim((-.2,0))
+    #plt.ylim((-.2,0))
     plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
     plt.title(title)
     plt.legend(handles=[patch])
