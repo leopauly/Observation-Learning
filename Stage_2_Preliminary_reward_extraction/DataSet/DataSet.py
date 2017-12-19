@@ -4,8 +4,6 @@ from PIL import Image
 from os import listdir
 from scipy.ndimage import imread
 
-#dspath = '../../../../../nobackup/leopauly/rgb/'
-
 class DataSet():
         
     def __init__(self,nb_class,time_step, height, width, channel,dspath,classname='diff'):   
@@ -35,7 +33,8 @@ class DataSet():
                         framepath = vidpath+str(frame)+'rgb.png'
                         # print('[',vidIndex, frame, ']', directory)
                         print('Loading ', framepath)
-                        self.videos[vidIndex, frame] = imread(framepath)[:,:,:3]
+                        self.videos[vidIndex, frame] = np.asarray(Image.open(framepath).resize((self.height,self.width),Image.BICUBIC), dtype=np.uint8)[:,:,:3]
+
         random.seed(7)
         self.reset()
     
