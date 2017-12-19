@@ -3,8 +3,9 @@
 '''
 Written : Leo pauly
 Descripion : Program to be implemented inside Baxter for performing observation learning.
-Version v3:
-Implemented the workflow for adding reinforcement learning]
+Version v4:
+Implementing reinforcement learning algoithm
+
 
 Courtesy : http://wiki.ros.org
 Enable robot first by running: $ rosrun baxter_tools enable_robot.py -e
@@ -12,7 +13,7 @@ Enable robot first by running: $ rosrun baxter_tools enable_robot.py -e
 
 ## Specifing matplotlib backend
 import matplotlib
-matplotlib.use('Qt4Agg')
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 ## Setting theano as backend
@@ -34,12 +35,15 @@ import cv2 as cv
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
+from collections import defaultdict
+import baxter_interface
 
 ## Custom scripts
 import lscript as lsp
 import modelling as md
 from DataSet import DataSet
 import dataset as dset
+import rl
 
 
 class s2l():
@@ -67,6 +71,11 @@ class s2l():
     self.reward=np.ones([self.num_clusters,1])
     self.features_robo=np.zeros([self.num_clusters,self.feature_size])
     self.features_demo=np.zeros([self.num_clusters,self.feature_size])
+    self.action_num= 10 # Number of possible actions
+    self.num_episodes=3 # Number of possible actions
+    self.episode_rewards = np.zeros(self.num_episodes)
+    self.episode_lengths = np.zeros(self.num_episodes)
+    self.limb = baxter_interface.Limb('right')
 
 
    def load_model(self):
@@ -139,10 +148,11 @@ class s2l():
         # use self.state for obaining state variable
        return 1
 
-   def take_action(self):
+   def take_action(self,action):
+       wave_0 = {'right_s0': -0.459, 'right_s1': -0.202, 'right_e0': 1.807, 'right_e1': 1.714, 'right_w0': -0.906, 'right_w1': -1.545, 'right_w2': -0.276}
+       if (action==0):
+           self.limb.move_to_joint_positions( wave_0)
        print('action taken')
-        # use self.action for obaining state variable
-       return 1
 
    def rl_rewards(self):
         #for i in range(self.num_clusters):
@@ -169,8 +179,96 @@ class s2l():
    def num_iterations(self):
         return self.num_clusters
 
-   def reset(self):
-       return 1
+   def reset_after_episode(self):
+       self.iter=0
+
+   def reset_pose(self):
+       angles = limb.joint_angles()
+       angles['right_s0']=0.0
+       angles['right_s1']=0.0
+       angles['right_e0']=0.0
+       angles['right_e1']=0.0
+       angles['right_w0']=0.0
+       angles['right_w1']=0.0
+       angles['right_w2']=0.0
+       print ('Robotic hands moved to initial pose')
+       limb.move_to_joint_positions(angles)
+
+
+
+   def q_learning(self, discount_factor=1.0, alpha=0.5, epsilon=0.1):
+    """
+    Q-Learning algorithm: Off-policy TD control. Finds the optimal greedy policy
+    while following an epsilon-greedy policy
+
+    Args:
+        env: OpenAI environment.
+        self.num_episodes: Number of episodes to run for.
+        discount_factor: Gamma discount factor.
+        alpha: TD learning rate.
+        epsilon: Chance the sample a random action. Float betwen 0 and 1.
+
+    Returns:
+        A tuple (Q, episode_lengths).
+        Q is the optimal action-value function, a dictionary mapping state -> action values.
+        stats is an EpisodeStats object with two numpy arrays for episode_lengths and episode_rewards.
+    """
+
+    # The final action-value function.
+    # A nested dictionary that maps state -> (action -> action-value).
+    Q = defaultdict(lambda: np.zeros(self.action_num))
+
+    # Keeps track of useful statistics
+    # stats = plotting.EpisodeStats(episode_lengths=np.zeros(self.num_episodes),episode_rewards=np.zeros(self.num_episodes))
+
+    # The policy we're following
+    policy = rl.make_epsilon_greedy_policy(Q, epsilon, self.action_num)
+
+    for i_episode in range(self.num_episodes):
+        # Print out which episode we're on, useful for debugging.
+        if (i_episode + 1) % 100 == 0:
+            print("\rEpisode {}/{}.".format(i_episode + 1, self.num_episodes)," ")
+
+        self.reset_pose()
+        obj.listener() # Class funcion for getting frames from Baxter camera
+        obj.extract_features_robo()  # Class funcion extracting featurs from robot acion
+        self.state= self.features_robo[self.iter]
+        self.clear_video()
+        # One step in the environment
+        # total_reward = 0.0
+        for t in range(self.num_iterations()):
+
+            # Take a step
+            action_probs = policy(1)  #self.state)  #Problem 1
+            action = np.random.choice(np.arange(len(action_probs)), p=action_probs) #Problem 5
+            self.take_action(action)
+            #obj.check()
+
+            self.listener() # Class funcion for getting frames from Baxter camera
+            self.extract_features_robo()  # Class funcion extracting featurs
+            self.rl_rewards()  # Class funcion for providing rewads
+            next_state=self.features_robo[self.iter]
+            reward=self.reward[self.iter]
+
+            # Update statistics
+            self.episode_rewards[i_episode] += reward
+            self.episode_lengths[i_episode] = t
+
+            # TD Update
+            best_next_action = np.argmax(Q[1])   #[next_state])  #Problem 2
+            td_target = reward + discount_factor * Q[1][best_next_action] #Q[next_state][best_next_action] #Problem 4
+            td_delta = td_target -Q[1][action] #Q[state][action] #Problem 5
+             #Q[self.state][action] += alpha * td_delta #Problem 3
+
+            print('iteration : {}finished'.format(t))
+            self.state = next_state
+            self.iter_update()
+            self.clear_video()
+
+        self.episode_analysis() # Class funcion for analysing the final results after each episode
+        self.reset_after_episode()
+
+    return Q
 
 if __name__ == '__main__':
     ## Checking if theano is backend
@@ -181,20 +279,8 @@ if __name__ == '__main__':
       print("Backend ok")
 
     obj=s2l() # Creating object for class s2l
-    obj.listener() # Class funcion for getting frames from Baxter camera
     obj.load_model() # Class funcion loading model
     obj.load_data() # Class funcion loading stored data (Demonstrations)
     obj.extract_features_demo()  # Class funcion extracting featurs from demonstration
-    obj.extract_features_robo()  # Class funcion extracting featurs from robot acion
-    for i in range(obj.num_iterations()):
-     obj.rl() # Class function for implementing RL algorithm
-     obj.take_action()
-     #obj.check()
-     obj.clear_video()
-     obj.listener() # Class funcion for getting frames from Baxter camera
-     obj.extract_features_robo()  # Class funcion extracting featurs
-     obj.rl_rewards()  # Class funcion for providing rewads
 
-     obj.iter_update()
-    obj.episode_analysis() # Class funcion for analysing the final results after each episode
-    obj.reset() # Fo reseting afer every episode
+    Q, stats = obj.q_learning() # Passing argument number of episodes
