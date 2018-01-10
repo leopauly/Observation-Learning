@@ -2,7 +2,7 @@
 Programs related to the project : Seeing to Learn.
 
 
-## ToDO : 
+#### TODO : 
 - Delete directory : ExperimentSet_1_viewpoint_invariance
 - 
 
