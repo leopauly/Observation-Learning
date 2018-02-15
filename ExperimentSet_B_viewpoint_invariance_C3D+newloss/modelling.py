@@ -254,3 +254,12 @@ def custom_modelC3D_theano(cluster_length,load_weights=True,summary=True):
         print(model.summary())
         
     return model
+
+def get_vgg16_imagenet(summary=True,include_fc=True):
+    ''' Returns a vgg16 model with pretrained weights'''
+    import keras 
+    model=keras.applications.vgg16.VGG16(include_top=include_fc, weights='imagenet', input_tensor=None, input_shape=None, pooling=None, classes=1000)
+    if summary:
+        print(model.summary())
+    return model
+    
