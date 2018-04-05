@@ -1,0 +1,16 @@
+## WARNING!
+## The current directory is in your home directory. Please use the high-performance
+## cluster filesystem /nobackup. See documentation for information.
+## WARNING!
+
+## Hosts assigned to job 313248.1:
+##
+## db12gpu1.arc3.leeds.ac.uk 24 slots
+##
+## Resources granted:
+##
+## h_vmem = 5726623061 (per slot)
+## h_rt   = 48:00:00
+## disk   = 1G (per slot)
+
+Starting c3d+ucf training script...
