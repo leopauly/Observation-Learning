@@ -34,7 +34,6 @@ def view_image(img,image_details=False):
         print('Image array \n:',img)
     #plt.figure(figsize=(20,20))
     plt.imshow(img)
-    plt.gray()
     plt.show()
     
 def view_images(img,labels,axis_show='off'):
@@ -45,7 +44,6 @@ def view_images(img,labels,axis_show='off'):
             plt.imshow(img[i])
             plt.axis(axis_show)
             plt.title(str(labels[i]))
-    plt.gray()
     plt.show()
     
 def reshape_grayscale_as_tensor(batch_x):
@@ -94,7 +92,7 @@ def view_video_inline(x,y,time_step,item_num,axis_show='off'):
     for i in range (0,time_step):
         img=x[item_num][i]
         plt.subplot(1,time_step,i+1)
-        plt.imshow(img,cmap='viridis')
+        plt.imshow(img)
         plt.axis(axis_show)
     #plt.color()
     plt.show()  
