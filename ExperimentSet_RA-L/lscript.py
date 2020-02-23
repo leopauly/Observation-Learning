@@ -118,3 +118,6 @@ def one_hot(y,nb_classes):
 def leo():
     print('leo {}'.format(3))
     
+def truncate_num(n, decimals=0):
+    multiplier = 10 ** decimals
+    return int(n * multiplier) / multiplier
