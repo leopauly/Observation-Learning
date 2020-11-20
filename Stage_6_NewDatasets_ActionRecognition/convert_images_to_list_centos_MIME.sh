@@ -26,11 +26,29 @@
 COUNT=-1
 STEP=-1
 DIV=0
+
 for folder in $1/*
-do
+do 
+    echo "Class:" $folder
+    temp_idx=0
+    shuffle_folder=0
     COUNT=$[$COUNT + 1]
-    for imagesFolder in "$folder"/*/*
+    
+    for temp_folder in $folder/*/*
     do
+    shuffle_folder[$temp_idx]=$temp_folder
+    temp_idx=$[$temp_idx + 1]
+    done
+    
+    #echo ${shuffle_folder[@]}
+    shuffle_folder=( $(shuf -e ${shuffle_folder[@]}) ) 
+    echo "Total number of videos in class:$COUNT ${#shuffle_folder[@]}" 
+     
+    
+    
+    for imagesFolder in "${shuffle_folder[@]}"
+    do  
+        #echo "Sub folder: "$imagesFolder
         if [[ $imagesFolder == *"."* ]]; then
             rm "$imagesFolder"
             echo "Skipped"
@@ -39,11 +57,12 @@ do
         STEP=$[$STEP + 1]
         VAL=$(($STEP % $2))
         if  (($VAL > $DIV)) ; then 
-            echo 'train'
+            #echo 'train:'$COUNT
             echo "$imagesFolder" $COUNT >> train.list
         else
             echo "$imagesFolder" $COUNT >> test.list
-            echo 'test'
+            #echo 'test:'$COUNT
         fi 
     done
+    unset shuffle_folder
 done

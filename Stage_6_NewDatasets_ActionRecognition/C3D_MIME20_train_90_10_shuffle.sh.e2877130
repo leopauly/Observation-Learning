@@ -1,0 +1,50 @@
+2020-06-26 15:06:27.850852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: Tesla P100-PCIE-12GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 11.91GiB freeMemory: 11.66GiB
+2020-06-26 15:06:27.969967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: Tesla P100-PCIE-12GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:83:00.0
+totalMemory: 11.91GiB freeMemory: 11.66GiB
+2020-06-26 15:06:27.971623: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2020-06-26 15:06:27.971671: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2020-06-26 15:06:27.971681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2020-06-26 15:06:27.971687: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2020-06-26 15:06:27.971702: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2020-06-26 15:06:27.971711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
+2020-06-26 15:06:28.837668: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2020-06-26 15:06:28.837699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
+2020-06-26 15:06:28.839985: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2020-06-26 15:06:28.840003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
+Using TensorFlow backend.
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:451: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(64, (3, 3, 3), activation="relu", name="conv1", input_shape=(16, 112, ..., padding="same")`
+  input_shape=input_shape))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:453: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(1, 2, 2), strides=(1, 2, 2), name="pool1", padding="valid")`
+  border_mode='valid', name='pool1'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:456: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(128, (3, 3, 3), activation="relu", name="conv2", padding="same")`
+  border_mode='same', name='conv2'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:458: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool2", padding="valid")`
+  border_mode='valid', name='pool2'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:461: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(256, (3, 3, 3), activation="relu", name="conv3a", padding="same")`
+  border_mode='same', name='conv3a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:463: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(256, (3, 3, 3), activation="relu", name="conv3b", padding="same")`
+  border_mode='same', name='conv3b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:465: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool3", padding="valid")`
+  border_mode='valid', name='pool3'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:468: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv4a", padding="same")`
+  border_mode='same', name='conv4a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:470: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv4b", padding="same")`
+  border_mode='same', name='conv4b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:472: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool4", padding="valid")`
+  border_mode='valid', name='pool4'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:475: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv5a", padding="same")`
+  border_mode='same', name='conv5a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:477: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv5b", padding="same")`
+  border_mode='same', name='conv5b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_6_NewDatasets_ActionRecognition/modelling.py:480: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool5", padding="valid")`
+  border_mode='valid', name='pool5'))
+WARNING:tensorflow:From <stdin>:92: calling argmax (from tensorflow.python.ops.math_ops) with dimension is deprecated and will be removed in a future version.
+Instructions for updating:
+Use the `axis` argument instead
+2020-06-26 15:06:31.110496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2020-06-26 15:06:31.110528: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
