@@ -41,8 +41,8 @@ memory_batch_size_train=9991
 memory_batch_size_test=3329
 iterations= 30 
 custom_global_step=0
-LOG_DIR='/nobackup/leopauly/logdirk80_1_extnd'
-saved_path='/nobackup/leopauly/S2l/'
+LOG_DIR='/nobackup/leopauly/logdirk80_1_extnd/12+12+12+12hr'
+saved_path='/nobackup/leopauly/logdirk80_1_extnd/12+12+12hr/'
 best_validation_accuracy=0.0
 best_iteration=0
 print('Finished defining variables..!!',flush=True)
@@ -156,7 +156,7 @@ sess.run(init_op)
 
 ## Restore model weights from previously saved model 
 saver = tf.train.Saver()
-saver.restore(sess, os.path.join(saved_path,'activity_model.ckpt-67'))
+saver.restore(sess, os.path.join(saved_path,'activity_model.ckpt-22'))
 print("Model restored from file: %s" % saved_path,flush=True)
 print ('started the session...!!',flush=True)
 

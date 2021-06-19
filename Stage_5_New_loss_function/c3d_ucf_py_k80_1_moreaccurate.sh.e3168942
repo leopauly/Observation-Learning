@@ -1,0 +1,68 @@
+2021-01-27 14:08:51.165823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:05:00.0
+totalMemory: 11.17GiB freeMemory: 11.11GiB
+2021-01-27 14:08:51.224958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.11GiB
+2021-01-27 14:08:51.290631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 2 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:84:00.0
+totalMemory: 11.17GiB freeMemory: 11.11GiB
+2021-01-27 14:08:51.358404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 3 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:85:00.0
+totalMemory: 11.17GiB freeMemory: 11.11GiB
+2021-01-27 14:08:51.358946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2021-01-27 14:08:51.358984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 2 3 
+2021-01-27 14:08:51.358994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y N N 
+2021-01-27 14:08:51.358999: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y N N 
+2021-01-27 14:08:51.359004: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 2:   N N Y Y 
+2021-01-27 14:08:51.359009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 3:   N N Y Y 
+2021-01-27 14:08:51.359025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:05:00.0, compute capability: 3.7)
+2021-01-27 14:08:51.359033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+2021-01-27 14:08:51.359040: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0, compute capability: 3.7)
+2021-01-27 14:08:51.359045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.459836: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:05:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.459867: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.459875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.459881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.464419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:05:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.464436: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.464443: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0, compute capability: 3.7)
+2021-01-27 14:08:52.464450: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+Using TensorFlow backend.
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:392: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(64, (3, 3, 3), activation="relu", name="conv1", input_shape=(16, 112, ..., padding="same")`
+  input_shape=input_shape))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:394: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(1, 2, 2), strides=(1, 2, 2), name="pool1", padding="valid")`
+  border_mode='valid', name='pool1'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:397: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(128, (3, 3, 3), activation="relu", name="conv2", padding="same")`
+  border_mode='same', name='conv2'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:399: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool2", padding="valid")`
+  border_mode='valid', name='pool2'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:402: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(256, (3, 3, 3), activation="relu", name="conv3a", padding="same")`
+  border_mode='same', name='conv3a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:404: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(256, (3, 3, 3), activation="relu", name="conv3b", padding="same")`
+  border_mode='same', name='conv3b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:406: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool3", padding="valid")`
+  border_mode='valid', name='pool3'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:409: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv4a", padding="same")`
+  border_mode='same', name='conv4a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:411: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv4b", padding="same")`
+  border_mode='same', name='conv4b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:413: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool4", padding="valid")`
+  border_mode='valid', name='pool4'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:416: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv5a", padding="same")`
+  border_mode='same', name='conv5a'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:418: UserWarning: Update your `Conv3D` call to the Keras 2 API: `Conv3D(512, (3, 3, 3), activation="relu", name="conv5b", padding="same")`
+  border_mode='same', name='conv5b'))
+/home/home01/cnlp/Seeing_to_Learn/Observation-Learning/Stage_5_New_loss_function/modelling.py:421: UserWarning: Update your `MaxPooling3D` call to the Keras 2 API: `MaxPooling3D(pool_size=(2, 2, 2), strides=(2, 2, 2), name="pool5", padding="valid")`
+  border_mode='valid', name='pool5'))
+WARNING:tensorflow:From <stdin>:93: calling argmax (from tensorflow.python.ops.math_ops) with dimension is deprecated and will be removed in a future version.
+Instructions for updating:
+Use the `axis` argument instead
+2021-01-27 14:08:56.700490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:05:00.0, compute capability: 3.7)
+2021-01-27 14:08:56.700794: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+2021-01-27 14:08:56.700806: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0, compute capability: 3.7)
+2021-01-27 14:08:56.700813: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)

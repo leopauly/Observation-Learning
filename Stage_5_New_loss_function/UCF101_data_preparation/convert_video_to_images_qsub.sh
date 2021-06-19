@@ -3,7 +3,7 @@
 #$ -M cnlp@leeds.ac.uk
 #$ -m be
 
-module load ffmpeg
+module load ffmpeg/3.4
 
 echo "Converting viedos to frames...!"
 
@@ -24,6 +24,7 @@ echo "Converting viedos to frames...!"
 #       ~/document/videofile/walk/video1/00005.jpg
 #       ...
 
+fps_value=10
 for folder in $1/*;
 do
     for file in "$folder"/*.avi
@@ -31,7 +32,7 @@ do
         if [[ ! -d "${file[@]%.avi}" ]]; then
             mkdir -p "${file[@]%.avi}"
         fi
-        ffmpeg -i "$file" -vf fps=$2 "${file[@]%.avi}"/%05d.jpg
+        ffmpeg -i "$file" -vf fps=$2 "${file[@]%.avi}"/%05d.jpg  # use fps=$2, if fps value is loaded from command line
         rm "$file"
     done
 done
